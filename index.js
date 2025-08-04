@@ -3,15 +3,19 @@ const app = express()
 require("dotenv").config()
 const mongoose = require("mongoose")
 const userRoutes =require("./routes/userRoutes")
+const categoryRoutes = require("./routes/categoryRoutes")
+// const charityRoutes = require("./models/charitySchema") 
+// const multer = require("multer")
+// const upload = multer({ storage: multer.memoryStorage() })
 
-const url= process.env.MongoDB_URL
+const mongo_url= process.env.MongoDB_URL
 const port= process.env.PORT || 8080
 
 app.use(express.json())
 
 function connectToMDB(){
     try{
-        mongoose.connect(url);
+        mongoose.connect(mongo_url);
         console.log("Connected to DB");
         
     }catch(err){
@@ -21,8 +25,16 @@ function connectToMDB(){
 }
 
 app.use("/api/v1/users",userRoutes)
+app.use("/api/v1/category",categoryRoutes)
+// app.use('/api/v1/charity', charityRoutes);
 
-app.listen(port,()=>{
+// app.post("/test-upload", upload.single("image"), (req, res) => {
+//   console.log(req.file);
+//   res.send("File uploaded");
+// });
+
+app.listen(8080,()=>{
     connectToMDB()
-    console.log(`Server is running on ${port} port`);   
+    console.log(`Server is running on 8080 port`);  
+     
 })
