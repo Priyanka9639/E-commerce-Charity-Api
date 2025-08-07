@@ -4,7 +4,7 @@ require("dotenv").config()
 const mongoose = require("mongoose")
 const userRoutes =require("./routes/userRoutes")
 const categoryRoutes = require("./routes/categoryRoutes")
-// const charityRoutes = require("./models/charitySchema") 
+ const charityRoutes = require("./routes/charityRoutes") 
 // const multer = require("multer")
 // const upload = multer({ storage: multer.memoryStorage() })
 
@@ -12,6 +12,7 @@ const mongo_url= process.env.MongoDB_URL
 const port= process.env.PORT || 8080
 
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
 
 function connectToMDB(){
     try{
@@ -26,15 +27,15 @@ function connectToMDB(){
 
 app.use("/api/v1/users",userRoutes)
 app.use("/api/v1/category",categoryRoutes)
-// app.use('/api/v1/charity', charityRoutes);
+ app.use('/api/v1/charity', charityRoutes);
 
 // app.post("/test-upload", upload.single("image"), (req, res) => {
 //   console.log(req.file);
 //   res.send("File uploaded");
 // });
 
-app.listen(8080,()=>{
+app.listen(3000,()=>{
     connectToMDB()
-    console.log(`Server is running on 8080 port`);  
+    console.log(`Server is running on 3000 port`);  
      
 })
