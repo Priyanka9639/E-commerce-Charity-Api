@@ -5,6 +5,7 @@ const mongoose = require("mongoose")
 const userRoutes =require("./routes/userRoutes")
 const categoryRoutes = require("./routes/categoryRoutes")
  const charityRoutes = require("./routes/charityRoutes") 
+ const productRoutes = require("./routes/productRoutes")
 // const multer = require("multer")
 // const upload = multer({ storage: multer.memoryStorage() })
 
@@ -28,6 +29,7 @@ function connectToMDB(){
 app.use("/api/v1/users",userRoutes)
 app.use("/api/v1/category",categoryRoutes)
  app.use('/api/v1/charity', charityRoutes);
+ app.use("/api/v1/product",productRoutes)
 
 // app.post("/test-upload", upload.single("image"), (req, res) => {
 //   console.log(req.file);

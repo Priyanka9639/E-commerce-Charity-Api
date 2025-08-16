@@ -7,7 +7,7 @@ const { createCharity, getAllCharities, getCharitiesOfAdmin, getCharityById, upd
 router.post("/", uploadFile("banner"), authenticateUser, charityValidationSchema, validateCharity, createCharity);
 
 // router.get("/", getAllCharities);
-// router.get("/:id", getCharityById);
+router.get("/:id", getCharityById);
 // router.get("/admin", authenticateUser, getCharitiesOfAdmin);
 // // router.get("/admin/:id", authenticateUser, getCharitiesOfAdmin);
 // router.get('/admin/:id', authenticateUser, authorizeRoles('admin', 'super_admin'),getCharityByAdminId);
