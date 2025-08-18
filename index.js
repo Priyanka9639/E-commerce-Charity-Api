@@ -32,7 +32,7 @@ app.use("/api/v1/users", userRoutes)
 app.use("/api/v1/category", categoryRoutes)
 app.use('/api/v1/charity', charityRoutes);
 app.use("/api/v1/product", productRoutes)
-app.use("/api/v1/address",addressRoutes)
+app.use("/api/v1/users/address",addressRoutes)
 
 // app.post("/test-upload", upload.single("image"), (req, res) => {
 //   console.log(req.file);

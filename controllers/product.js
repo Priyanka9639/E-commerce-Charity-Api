@@ -116,21 +116,14 @@ const patchProductStatus = async (req, res) => {
       return res.status(404).json({ status: "Failed", message: "Product not found" });
     }
 
-    // Debug logs
-    // console.log("DEBUG: req.user from token:", req.user);
-    // console.log("DEBUG: product.user_id from DB:", product.user_id.toString());
-    // console.log("DEBUG: req.user._id:", req.user._id.toString());
-    // console.log("DEBUG: req.user.role:", req.user.role);
-
-    // Allowed roles for updating any product
+  
     const allowedRoles = ["super_admin", "admin"];
 
-    // Authorization check
+    
     if (!allowedRoles.includes(req.user.role) && product.user_id.toString() !== req.user._id.toString()) {
       return res.status(403).json({ status: "Failed", message: "Not authorized" });
     }
 
-    // Update status
     product.status = status;
     await product.save();
 
@@ -148,7 +141,6 @@ const patchProductStatus = async (req, res) => {
 
 
 
-// Get Products by Charity ID
 const getProductsByCharity = async (req, res) => {
   try {
     let { id } = req.params;
@@ -168,7 +160,6 @@ const getProductsByCharity = async (req, res) => {
   }
 };
 
-// Get Products by Category ID
 const getProductsByCategory = async (req, res) => {
   try {
     let { id } = req.params;
@@ -188,7 +179,7 @@ const getProductsByCategory = async (req, res) => {
   }
 };
 
-// Get All Products
+
 const getAllProducts = async (req, res) => {
   try {
     const products = await Product.find();
@@ -201,7 +192,7 @@ const getAllProducts = async (req, res) => {
   }
 };
 
-// Get Product by ID
+
 const getProductById = async (req, res) => {
   try {
     let { id } = req.params;

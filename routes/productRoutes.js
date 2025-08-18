@@ -44,7 +44,8 @@ router.patch("/:id",authenticateUser,patchProductStatus)
 router.get(
     "/admin/charity/:id",
     authenticateUser,
-    authorizeRoles("admin", "super_admin"), // Only admin/super_admin can access
+    authorizeRoles("admin", "super_admin"), 
+    
     getProductsByCharity
 );
 

@@ -4,7 +4,8 @@ const addressSchema = new mongoose.Schema({
   user_id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    required: true, // will be set from token
+    required: true, 
+    
   },
   location: {
     type: String,
@@ -19,7 +20,6 @@ const addressSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator: function (v) {
-        // simple check for 6-digit Indian pincode
         return /^[1-9][0-9]{5}$/.test(v);
       },
       message: (props) => `${props.value} is not a valid pincode!`,

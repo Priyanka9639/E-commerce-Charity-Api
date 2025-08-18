@@ -1,12 +1,11 @@
 const Address = require("../models/addressSchema");
 
-// Create Address
+
+
 const createAddress = async (req, res) => {
   try {
     const userId = req.user._id;
-
-    // Ensure only one address per user
-    const existing = await Address.findOne({ user_id: userId });
+const existing = await Address.findOne({ user_id: userId });
     if (existing) {
       return res.status(400).json({ message: "User already has an address" });
     }
@@ -23,7 +22,8 @@ const createAddress = async (req, res) => {
   }
 };
 
-// Get Address (for logged-in user)
+
+
 const getAddress = async (req, res) => {
   try {
     const address = await Address.findOne({ user_id: req.user._id });
@@ -36,7 +36,8 @@ const getAddress = async (req, res) => {
   }
 };
 
-// Update Address
+
+
 const updateAddress = async (req, res) => {
   try {
     const address = await Address.findById(req.params.id);
@@ -55,7 +56,7 @@ const updateAddress = async (req, res) => {
   }
 };
 
-// Delete Address
+
 const deleteAddress = async (req, res) => {
   try {
     const address = await Address.findById(req.params.id);
